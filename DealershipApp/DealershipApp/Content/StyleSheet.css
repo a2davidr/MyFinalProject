@@ -1,0 +1,16 @@
+﻿body {
+}
+.navbar {
+    color: red !important;
+    background-color: rgba(0, 0, 0, 0.00);
+    float: left;
+    width: 10%;
+    height: 100%;
+    font-size: large;
+    padding-top: 10%;
+}
+
+.jumbotron {
+    background-color: rgba(0, 0, 0, 0.00);
+    text-align: center;
+}

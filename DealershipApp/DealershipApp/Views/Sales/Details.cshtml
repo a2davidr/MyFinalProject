@@ -1,0 +1,66 @@
+﻿@model DealershipApp.Models.Sales
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleCommission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleCommission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Make)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

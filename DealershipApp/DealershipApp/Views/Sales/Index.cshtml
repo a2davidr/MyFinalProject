@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DealershipApp.Models.Sales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle.Make)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle.Make)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
