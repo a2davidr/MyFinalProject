@@ -15,3 +15,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron {
+    background-color: rgb(0, 148, 255);
+    text-align: center;
+}
