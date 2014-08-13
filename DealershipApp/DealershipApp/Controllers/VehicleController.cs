@@ -115,6 +115,21 @@ namespace DealershipApp.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Sell(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicle.Find(id);
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("Create", "Sales", new { id });
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
