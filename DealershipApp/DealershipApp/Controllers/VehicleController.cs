@@ -15,11 +15,40 @@ namespace DealershipApp.Controllers
         private DealershipDataEntities db = new DealershipDataEntities();
 
         // GET: Vehicle
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
+        {
+            ViewBag.MakeSortParm = String.IsNullOrEmpty(sortOrder) ? "make" : "";
+            ViewBag.ModelSortParm = sortOrder == "model" ? "model" : "model";
+            ViewBag.YearSortParm = sortOrder == "year" ? "year" : "year";
+            var vehicle = from v in db.Vehicle
+                          select v;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicle = vehicle.Where(v => v.Make.ToUpper().Contains(searchString.ToUpper())
+                                     || v.Model.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "make":
+                    vehicle = vehicle.OrderBy(v => v.Make);
+                    break;
+                case "model":
+                    vehicle = vehicle.OrderBy(v => v.Model);
+                    break;
+                case "year":
+                    vehicle = vehicle.OrderByDescending(v => v.Year);
+                    break;
+                default:
+                    vehicle = vehicle.OrderBy(v => v.Make);
+                    break;
+            }
+            return View(vehicle.ToList());
+        }
+ /*       public ActionResult Index()
         {
             return View(db.Vehicle.ToList());
         }
-
+        */
         // GET: Vehicle/Details/5
         public ActionResult Details(int? id)
         {

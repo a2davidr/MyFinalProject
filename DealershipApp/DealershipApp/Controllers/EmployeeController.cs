@@ -15,9 +15,18 @@ namespace DealershipApp.Controllers
         private DealershipDataEntities db = new DealershipDataEntities();
 
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Employee.ToList());
+            var employee = from e in db.Employee
+                           select e;
+            employee = employee.OrderBy(e => e.LastName);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employee = employee.Where(e => e.LastName.ToUpper().Contains(searchString.ToUpper())
+                           || e.FirstName.ToUpper().Contains(searchString.ToUpper()));
+            }
+            return View(employee.ToList());
         }
 
         // GET: Employee/Details/5
