@@ -54,11 +54,17 @@ namespace DealershipApp.Controllers
         {
             if (ModelState.IsValid)
             {
+            try 
+               { 
                 db.Sales.Add(sales);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                }
+            catch (Exception e)
+                {
+                Console.WriteLine("Error Message = {0}", e.Message);
+                }
             }
-
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "FirstName", sales.CustomerID);
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "FirstName", sales.EmployeeID);
             ViewBag.VehicleID = new SelectList(db.Vehicle, "VehicleID", "Make", sales.VehicleID);
